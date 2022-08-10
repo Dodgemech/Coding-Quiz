@@ -107,7 +107,32 @@ var clock = function(){
     }
 };
 
+/* Function with stop coundown timer, then hide the questions container and display high
+score page with final score */
+var endQuiz = function() {
+    clearInterval(timer);
+    questionsContainerEl.setAttribute("class", "hide");
+    highScoreScreenEl.removeAttribute('class');
+    finalScoreEl.textContent = time;
+};
 
+/* Initials are grabbed from the text box, then checks to see if the value is empty
+and retrieves scores from local storage. Then a score object is created for the current user
+and saved to location storage and directs the user to the high scores html page. */
+var saveScore = function(){
+    var initials = initialsEl.value.trim();
+    if (initials !== "") {
+        var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+        var userScore = {
+            score: time,
+            initials: initials
+        };
+        highscores.push(userScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
+        window.location.href = "highscores.html";
+    };
+};
 
-
+submitBtn.onclick = saveScore;
+startBtn.onclick = startQuiz;
 
