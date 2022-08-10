@@ -42,7 +42,9 @@ var questions = [
     }
 ];
 
-// Quiz Start Function
+/* Quiz Start Function will select and remove startInfoEl attribute "class", then 
+will dispplay question container. Countdown timer will then start and be displayed. 
+displayQuestion is then called.*/
 var startQuiz = function() {
     var startInfoEl = document.querySelector(".start-info");
     startInfoEl.setAttribute("class", "hide");
@@ -52,7 +54,9 @@ var startQuiz = function() {
     displayQuestion();
 }
 
-// Display Question Function
+/* questionIndex tracks current question, question is then displayed, and then previous 
+choices are cleared. Choices are then looped and an event listner is added while choices
+are displayed on the page. */
 var displayQuestion = function() {
     var questionIndex = questions[currentQuestion];
     promptEl.textContent = questionIndex.prompt;
@@ -67,7 +71,10 @@ var displayQuestion = function() {
     });
 };
 
-// Correct/Incorrect response. Function will 
+/* Correct/Incorrect response. Function will check if answer is wrong, if wrong it will
+subtract time off the timer, then display updated time and display the feedback, then moves on to the
+next question, if current question is === to question.length, endQuiz will be called, else 
+displayQuestion will be called.*/
 var choiceClick = function() {
     if (this.value !== questions[currentQuestion].answer) {
         time -= 10;
@@ -75,7 +82,32 @@ var choiceClick = function() {
         feedbackEl.textContent = "Incorrect!"
     } else {
         feedbackEl.textContent = "Correct!";
+    };
+    feedbackEl.setAttribute("class", "feedback")
+    setTimeout(function() {
+        feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+    currentQuestion++;
+    setTimeout(() => {
+        if (currentQuestion === questions.length) {
+            endQuiz();
+        } else {
+            displayQuestion();
+        };
+    }, 1000);
+};
+
+/* Decrements time to mimick countdown then checks if time is <= to 0. If it is
+then it calls endQuiz. */
+var clock = function(){
+    time--;
+    timerEl.textContent = time;
+    if (time <= 0) {
+        endQuiz();
     }
 };
+
+
+
 
 
