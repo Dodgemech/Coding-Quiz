@@ -17,10 +17,11 @@ var getScores = function() {
 
 /* Clears highscore list when user clicks on button and runs getScores
   on page reload.*/
-var clearScores = function() {
+  var clearScores = function() {
     window.localStorage.removeItem("highscores");
     window.location.reload();
 }
 
 clearBtn.onclick = clearScores;
 getScores();
+

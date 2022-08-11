@@ -29,13 +29,13 @@
             <br /> Every wrong answer will penalize you 10 seconds from the timer. Good luck!
         </p>
 
-        <button type="button" id="start" class="btn btn-info">Start Quiz</button>
+        <button type="button" id="start" class="btn btn-dark">Start Quiz</button>
     </div>
 
     <div class="hide" id="questions">
         <h2 id="question-prompt">
         </h2>
-        <div id="question-choices">
+        <div id="question-choices" class="choices d-grid gap-3 col-6 mx-auto">
         </div>
     </div>
     <div id="right-wrong" class="feedback hide">
@@ -50,7 +50,7 @@
         <p>
             Enter your initials:
             <input type="text" id="initials" name="initials" /> <br />
-            <button id="submit" class="btn btn-success">Submit</button>
+            <button id="submit" class="btn btn-danger">Submit</button>
         </p>
     </div>
     <script src="assets/js/script.js"></script>

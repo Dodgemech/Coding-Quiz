@@ -63,7 +63,7 @@ var displayQuestion = function() {
     choicesEl.innerHTML = "";
     questionIndex.choices.forEach(function(choices, i) {
         var choiceBtn = document.createElement("button");
-        choiceBtn.setAttribute("class", "choice btn btn-outline-primary")
+        choiceBtn.setAttribute("class", "choice btn btn-outline-dark")
         choiceBtn.setAttribute("value", choices);
         choiceBtn.textContent = i + 1 + ". " + choices;
         choiceBtn.onclick = choiceClick;
