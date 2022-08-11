@@ -1,4 +1,4 @@
-# Coding-Quiz
+# Coding Quiz
 This code quiz was created to test proper funcionality and use of JavaScript and WebAPI's. User story and acceptance criteria are as follow...
 
 ## User Story
